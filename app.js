@@ -23,7 +23,7 @@ app.use(express.static(path.join(__dirname, "src", "public")));
 app.use("/", homeRoutes);
 app.use("/posts", postRoutes);
 
-connectDB().then(async () => {
+const ensureDefaultUser = async () => {
     const count = await User.countDocuments();
     if (count === 0) {
         await User.create({
@@ -36,7 +36,19 @@ connectDB().then(async () => {
         });
         console.log("Usuario por defecto creado para pruebas.");
     }
-});
+};
 
-const PORT = process.env.PORT || 3001;
-app.listen(PORT, () => console.log(`Servidor en http://localhost:${PORT}`));
+const startServer = async () => {
+    try {
+        await connectDB();
+        await ensureDefaultUser();
+
+        const PORT = process.env.PORT || 3001;
+        app.listen(PORT, () => console.log(`Servidor en http://localhost:${PORT}`));
+    } catch (error) {
+        console.error("Error al iniciar el servidor:", error.message);
+        process.exit(1);
+    }
+};
+
+startServer();
