@@ -38,10 +38,24 @@ const ensureDefaultUser = async () => {
     }
 };
 
+const prepareDatabase = async () => {
+    await connectDB();
+    await ensureDefaultUser();
+};
+
+app.use(async (req, res, next) => {
+    try {
+        await prepareDatabase();
+        next();
+    } catch (error) {
+        console.error("Error al preparar la base de datos:", error.message);
+        res.status(500).send("No se pudo conectar con la base de datos.");
+    }
+});
+
 const startServer = async () => {
     try {
-        await connectDB();
-        await ensureDefaultUser();
+        await prepareDatabase();
         const PORT = process.env.PORT || 3001;
         app.listen(PORT, () => console.log(`Servidor en http://localhost:${PORT}`));
     } catch (error) {
@@ -50,4 +64,8 @@ const startServer = async () => {
     }
 };
 
-startServer();
+if (!process.env.VERCEL) {
+    startServer();
+}
+
+export default app;
