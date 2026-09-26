@@ -1,31 +1,18 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Editar Publicación</title>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Editar publicación | Social Space</title>
+  <script src="https://cdn.tailwindcss.com"></script><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"><script>tailwind.config = { theme: { extend: { fontFamily: { sans: ['Plus Jakarta Sans', 'sans-serif'] } } } };</script>
 </head>
-<body class="container" style="margin-top: 40px;">
-  <h4>Editar Publicación</h4>
-  <form action="/posts/edit/<%= post._id %>" method="POST" class="col s12">
-    <div class="input-field">
-      <input id="title" name="title" type="text" value="<%= post.title %>" required minlength="5" maxlength="30">
-      <label class="active" for="title">Título</label>
-    </div>
-    <div class="input-field">
-      <textarea id="content" name="content" class="materialize-textarea" required minlength="10"><%= post.content %></textarea>
-      <label class="active" for="content">Contenido</label>
-    </div>
-    <div class="input-field">
-      <input id="hashtags" name="hashtags" type="text" value="<%= post.hashtags ? post.hashtags.join(', ') : '' %>">
-      <label class="active" for="hashtags">Hashtags (separados por coma)</label>
-    </div>
-    <div class="input-field">
-      <input id="imageUrl" name="imageUrl" type="url" value="<%= post.imageUrl || '' %>">
-      <label class="active" for="imageUrl">URL de Imagen</label>
-    </div>
-    <button type="submit" class="btn teal darken-2">Actualizar Publicación</button>
-    <a href="/posts" class="btn-flat">Cancelar</a>
-  </form>
+<body class="min-h-screen bg-slate-950 font-sans text-slate-100"><div class="min-h-screen bg-[radial-gradient(circle_at_50%_0%,rgba(168,85,247,0.14),transparent_35%)]"><nav class="border-b border-white/10 bg-slate-950/80 backdrop-blur-xl"><div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 lg:px-10"><a href="/" class="flex items-center gap-3 text-sm font-extrabold"><span class="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-500 to-fuchsia-500"><i class="fa-solid fa-layer-group"></i></span> social<span class="text-indigo-400">/</span>space</a><a href="/posts" class="text-sm font-semibold text-slate-400 transition hover:text-white"><i class="fa-solid fa-arrow-left mr-2 text-xs"></i>Volver a publicaciones</a></div></nav>
+  <main class="mx-auto max-w-2xl px-6 py-12 lg:py-16"><div class="mb-8"><p class="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-fuchsia-400">Editar contenido</p><h1 class="text-3xl font-extrabold tracking-[-0.04em] text-white">Dale una nueva forma</h1><p class="mt-3 text-sm leading-6 text-slate-400">Actualiza los detalles de tu publicación y mantén la conversación viva.</p></div>
+    <form action="/posts/edit/<%= post._id %>" method="POST" class="space-y-6 rounded-3xl border border-white/10 bg-white/[0.045] p-6 shadow-2xl shadow-black/30 backdrop-blur-xl sm:p-8">
+      <div><label for="title" class="mb-2 block text-sm font-semibold text-slate-200">Título</label><input id="title" name="title" type="text" value="<%= post.title %>" required minlength="5" maxlength="30" class="w-full rounded-xl border border-white/10 bg-slate-950/70 px-4 py-3 text-sm text-white outline-none transition focus:border-fuchsia-400 focus:ring-4 focus:ring-fuchsia-500/10"><p class="mt-2 text-xs text-slate-500">Entre 5 y 30 caracteres.</p></div>
+      <div><label for="content" class="mb-2 block text-sm font-semibold text-slate-200">Contenido</label><textarea id="content" name="content" required minlength="10" rows="6" class="w-full resize-y rounded-xl border border-white/10 bg-slate-950/70 px-4 py-3 text-sm leading-6 text-white outline-none transition focus:border-fuchsia-400 focus:ring-4 focus:ring-fuchsia-500/10"><%= post.content %></textarea><p class="mt-2 text-xs text-slate-500">Mínimo 10 caracteres.</p></div>
+      <div><label for="hashtags" class="mb-2 block text-sm font-semibold text-slate-200">Hashtags <span class="font-normal text-slate-500">(opcional)</span></label><input id="hashtags" name="hashtags" type="text" value="<%= post.hashtags ? post.hashtags.join(', ') : '' %>" class="w-full rounded-xl border border-white/10 bg-slate-950/70 px-4 py-3 text-sm text-white outline-none transition placeholder:text-slate-600 focus:border-fuchsia-400 focus:ring-4 focus:ring-fuchsia-500/10"></div>
+      <div><label for="imageUrl" class="mb-2 block text-sm font-semibold text-slate-200">Imagen <span class="font-normal text-slate-500">(opcional)</span></label><input id="imageUrl" name="imageUrl" type="url" value="<%= post.imageUrl || '' %>" class="w-full rounded-xl border border-white/10 bg-slate-950/70 px-4 py-3 text-sm text-white outline-none transition focus:border-fuchsia-400 focus:ring-4 focus:ring-fuchsia-500/10"></div>
+      <div class="flex flex-col-reverse gap-3 border-t border-white/10 pt-6 sm:flex-row sm:justify-end"><a href="/posts" class="inline-flex items-center justify-center rounded-xl border border-white/10 px-5 py-3 text-sm font-bold text-slate-400 transition hover:bg-white/[0.06] hover:text-white">Cancelar</a><button type="submit" class="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-indigo-500 to-fuchsia-500 px-5 py-3 text-sm font-bold text-white shadow-lg shadow-indigo-500/20 transition hover:-translate-y-0.5 hover:shadow-fuchsia-500/25"><i class="fa-solid fa-floppy-disk"></i> Guardar cambios</button></div>
+    </form>
+  </main></div>
 </body>
 </html>

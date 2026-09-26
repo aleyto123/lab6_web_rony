@@ -1,21 +1,55 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Social Media - Home</title>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Social Media | Workspace</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <script>
+    tailwind.config = { theme: { extend: { fontFamily: { sans: ['Plus Jakarta Sans', 'sans-serif'] } } } };
+  </script>
 </head>
-<body class="container center-align" style="margin-top: 80px;">
-  <h2 class="blue-text text-darken-2">Bienvenido a Social Media 🚀</h2>
-  <p class="flow-text">Conéctate, comparte y explora publicaciones</p>
-  <div class="row" style="margin-top: 50px;">
-    <div class="col s12 m12">
-      <a href="/posts/" class="btn-large waves-effect waves-light blue darken-2">
-        <i class="material-icons left">image</i> Ver Pots
+<body class="min-h-screen overflow-x-hidden bg-slate-950 font-sans text-slate-100">
+  <div class="pointer-events-none fixed inset-0 -z-0 bg-[radial-gradient(circle_at_15%_10%,rgba(99,102,241,0.18),transparent_28%),radial-gradient(circle_at_85%_70%,rgba(168,85,247,0.12),transparent_30%)]"></div>
+  <nav class="relative z-10 border-b border-white/10 bg-slate-950/75 backdrop-blur-xl">
+    <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 lg:px-10">
+      <a href="/" class="flex items-center gap-3 text-sm font-extrabold tracking-tight">
+        <span class="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-500 to-fuchsia-500 shadow-lg shadow-indigo-500/25"><i class="fa-solid fa-layer-group"></i></span>
+        <span>social<span class="text-indigo-400">/</span>space</span>
       </a>
-    </div> 
-  </div>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <a href="/posts/" class="text-sm font-semibold text-slate-400 transition hover:text-white">Explorar posts <i class="fa-solid fa-arrow-up-right-from-square ml-2 text-xs"></i></a>
+    </div>
+  </nav>
+
+  <main class="relative z-10 mx-auto max-w-7xl px-6 pb-20 pt-20 lg:px-10 lg:pt-28">
+    <section class="max-w-4xl">
+      <div class="mb-7 inline-flex items-center gap-2 rounded-full border border-indigo-400/20 bg-indigo-400/10 px-3 py-1.5 text-xs font-bold uppercase tracking-[0.18em] text-indigo-300"><span class="h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_10px_#34d399]"></span> Workspace activo</div>
+      <h1 class="max-w-4xl text-5xl font-extrabold leading-[1.05] tracking-[-0.04em] text-white sm:text-7xl">Ideas que toman forma <span class="bg-gradient-to-r from-indigo-400 via-fuchsia-400 to-pink-400 bg-clip-text text-transparent">en comunidad.</span></h1>
+      <p class="mt-7 max-w-2xl text-lg leading-8 text-slate-400">Un espacio sencillo para publicar, descubrir y mantener conversaciones que merecen quedarse.</p>
+      <div class="mt-10 flex flex-col gap-3 sm:flex-row">
+        <a href="/posts/" class="inline-flex items-center justify-center gap-3 rounded-xl bg-gradient-to-r from-indigo-500 to-fuchsia-500 px-6 py-3.5 text-sm font-bold text-white shadow-xl shadow-indigo-500/20 transition hover:-translate-y-0.5 hover:shadow-fuchsia-500/30"><i class="fa-solid fa-compass"></i> Ver publicaciones</a>
+        <a href="/posts/create" class="inline-flex items-center justify-center gap-3 rounded-xl border border-white/10 bg-white/[0.04] px-6 py-3.5 text-sm font-bold text-slate-200 transition hover:border-white/20 hover:bg-white/[0.08]"><i class="fa-solid fa-plus"></i> Crear publicación</a>
+      </div>
+    </section>
+
+    <section class="mt-24 grid gap-4 md:grid-cols-3">
+      <article class="rounded-2xl border border-white/10 bg-white/[0.04] p-6 backdrop-blur-xl transition hover:-translate-y-1 hover:border-emerald-400/30">
+        <div class="mb-8 flex h-11 w-11 items-center justify-center rounded-xl bg-emerald-400/10 text-emerald-300"><i class="fa-solid fa-database"></i></div>
+        <h2 class="font-bold text-white">MongoDB</h2><p class="mt-2 text-sm leading-6 text-slate-400">Datos flexibles y listos para crecer con tus publicaciones.</p>
+      </article>
+      <article class="rounded-2xl border border-white/10 bg-white/[0.04] p-6 backdrop-blur-xl transition hover:-translate-y-1 hover:border-indigo-400/30">
+        <div class="mb-8 flex h-11 w-11 items-center justify-center rounded-xl bg-indigo-400/10 text-indigo-300"><i class="fa-solid fa-code"></i></div>
+        <h2 class="font-bold text-white">Express + EJS</h2><p class="mt-2 text-sm leading-6 text-slate-400">Una experiencia web rápida, clara y conectada al backend.</p>
+      </article>
+      <article class="rounded-2xl border border-white/10 bg-white/[0.04] p-6 backdrop-blur-xl transition hover:-translate-y-1 hover:border-fuchsia-400/30">
+        <div class="mb-8 flex h-11 w-11 items-center justify-center rounded-xl bg-fuchsia-400/10 text-fuchsia-300"><i class="fa-solid fa-arrows-rotate"></i></div>
+        <h2 class="font-bold text-white">CRUD completo</h2><p class="mt-2 text-sm leading-6 text-slate-400">Crea, edita, consulta y elimina contenido desde un solo lugar.</p>
+      </article>
+    </section>
+  </main>
 </body>
 </html>
