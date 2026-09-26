@@ -2,7 +2,9 @@ import express from "express";
 import postController from "../controllers/postController.js";
 
 const router = express.Router();
+
 router.get("/", postController.getAll);
+router.post("/create/:userId", postController.create);
 router.get("/create", postController.showCreateForm);
 router.post("/create", postController.create);
 router.get("/edit/:id", postController.showEditForm);
