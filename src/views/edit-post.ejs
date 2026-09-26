@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Editar Publicación</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+</head>
+<body class="container" style="margin-top: 40px;">
+  <h4>Editar Publicación</h4>
+  <form action="/posts/edit/<%= post._id %>" method="POST" class="col s12">
+    <div class="input-field">
+      <input id="title" name="title" type="text" value="<%= post.title %>" required minlength="5" maxlength="30">
+      <label class="active" for="title">Título</label>
+    </div>
+    <div class="input-field">
+      <textarea id="content" name="content" class="materialize-textarea" required minlength="10"><%= post.content %></textarea>
+      <label class="active" for="content">Contenido</label>
+    </div>
+    <div class="input-field">
+      <input id="hashtags" name="hashtags" type="text" value="<%= post.hashtags ? post.hashtags.join(', ') : '' %>">
+      <label class="active" for="hashtags">Hashtags (separados por coma)</label>
+    </div>
+    <div class="input-field">
+      <input id="imageUrl" name="imageUrl" type="url" value="<%= post.imageUrl || '' %>">
+      <label class="active" for="imageUrl">URL de Imagen</label>
+    </div>
+    <button type="submit" class="btn teal darken-2">Actualizar Publicación</button>
+    <a href="/posts" class="btn-flat">Cancelar</a>
+  </form>
+</body>
+</html>

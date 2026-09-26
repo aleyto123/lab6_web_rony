@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Crear Publicación</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+</head>
+<body class="container" style="margin-top: 40px;">
+  <h4>Crear Nueva Publicación</h4>
+  <form action="/posts/create" method="POST" class="col s12">
+    <div class="input-field">
+      <input id="title" name="title" type="text" required minlength="5" maxlength="30">
+      <label for="title">Título (5-30 caracteres)</label>
+    </div>
+    <div class="input-field">
+      <textarea id="content" name="content" class="materialize-textarea" required minlength="10"></textarea>
+      <label for="content">Contenido (mínimo 10 caracteres)</label>
+    </div>
+    <div class="input-field">
+      <input id="hashtags" name="hashtags" type="text">
+      <label for="hashtags">Hashtags (separados por coma: nodejs, express, mongo)</label>
+    </div>
+    <div class="input-field">
+      <input id="imageUrl" name="imageUrl" type="url">
+      <label for="imageUrl">URL de Imagen (Opcional)</label>
+    </div>
+    <div class="input-field">
+      <select name="userId" required style="display:block;">
+        <option value="" disabled selected>Selecciona un Autor</option>
+        <% users.forEach(user => { %>
+          <option value="<%= user._id %>"><%= user.name %> <%= user.lastName %> (<%= user.email %>)</option>
+        <% }) %>
+      </select>
+    </div>
+    <button type="submit" class="btn blue darken-2">Guardar Publicación</button>
+    <a href="/posts" class="btn-flat">Cancelar</a>
+  </form>
+</body>
+</html>
