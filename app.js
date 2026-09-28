@@ -20,9 +20,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "src", "public")));
 
-app.use("/", homeRoutes);
-app.use("/posts", postRoutes);
-
 const ensureDefaultUser = async () => {
     const count = await User.countDocuments();
     if (count === 0) {
@@ -52,6 +49,9 @@ app.use(async (req, res, next) => {
         res.status(500).send("No se pudo conectar con la base de datos.");
     }
 });
+
+app.use("/", homeRoutes);
+app.use("/posts", postRoutes);
 
 const startServer = async () => {
     try {
